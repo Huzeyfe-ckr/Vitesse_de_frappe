@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Teste et améliore ta vitesse de frappe au clavier.">
+    <title>Vitesse de frappe | Typing test</title>
+</head>
+<body>
+    <main class="app-shell">
+        <header class="site-header">
+            <a class="brand" href="./" aria-label="Vitesse de frappe, accueil">
+                <span class="brand-mark" aria-hidden="true">⌨</span>
+                <span>vitesse<span class="brand-accent">.frappe</span></span>
+            </a>
+            <p class="header-hint">Tape naturellement, vise la précision.</p>
+        </header>
+
+        <section class="game-card" aria-labelledby="game-title">
+            <div class="game-heading">
+                <div>
+                    <p class="eyebrow">Test de vitesse</p>
+                    <h1 id="game-title">Combien de mots par minute ?</h1>
+                </div>
+                <div class="timer" aria-live="polite">
+                    <span class="timer-label">Temps</span>
+                    <span id="timer-value">0.0 s</span>
+                </div>
+            </div>
+            <div class="progress-track" aria-hidden="true"><div class="progress-bar" id="progress-bar"></div></div>
+            <p class="text-display" id="text-display" aria-label="Phrase à recopier"></p>
+            <label class="sr-only" for="typing-input">Recopie la phrase affichée</label>
+            <textarea id="typing-input" class="typing-input" rows="3" spellcheck="false" autocomplete="off" autocapitalize="off" placeholder="Commence à taper ici..." aria-describedby="input-help"></textarea>
+            <p class="input-help" id="input-help">Le chrono démarre dès ta première frappe.</p>
+        </section>
+
+        <section class="results-panel" id="results-panel" aria-labelledby="results-title" hidden>
+            <div class="results-heading">
+                <div><p class="eyebrow">Session terminée</p><h2 id="results-title">Voilà tes résultats</h2></div>
+                <span class="result-badge" aria-hidden="true">✓</span>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item"><span class="stat-label">Vitesse</span><strong class="stat-value"><span id="wpm-value">0</span> <small>WPM</small></strong></div>
+                <div class="stat-item"><span class="stat-label">Précision</span><strong class="stat-value"><span id="accuracy-value">100</span><small>%</small></strong></div>
+                <div class="stat-item"><span class="stat-label">Mots corrects</span><strong class="stat-value" id="words-value">0</strong></div>
+                <div class="stat-item"><span class="stat-label">Erreurs</span><strong class="stat-value" id="errors-value">0</strong></div>
+                <div class="stat-item"><span class="stat-label">Temps total</span><strong class="stat-value"><span id="total-time-value">0.0</span><small> s</small></strong></div>
+                <div class="stat-item"><span class="stat-label">Caractères / min</span><strong class="stat-value"><span id="cpm-value">0</span> <small>CPM</small></strong></div>
+            </div>
+            <button class="restart-button" id="restart-button" type="button"><span aria-hidden="true">↻</span> Recommencer</button>
+        </section>
+
+        <footer class="site-footer"><span>Une phrase différente à chaque partie</span><span class="footer-separator" aria-hidden="true">•</span><span>Français · AZERTY friendly</span></footer>
+    </main>
+    <script src="script.js" defer></script>
+</body>
+</html>
