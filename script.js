@@ -93,8 +93,6 @@ function finishGame() {
 function handleInput(event) {
     if (gameFinished) return;
 
-    // Anti-triche : une frappe normale ajoute 1 caractère à la fois.
-    // Un gros ajout d'un coup (collage, glisser-déposer, injection) est annulé.
     const rawValue = event.target.value;
     if (!event.isComposing && rawValue.length - previousTypedText.length > 2) {
         event.target.value = previousTypedText;
@@ -136,14 +134,10 @@ function resetGame() {
     typingInput.focus();
 }
 
-/* ---------- Protection contre le copier-coller ---------- */
-
-// Texte affiché : impossible de le sélectionner, copier, couper ou glisser
 ['copy', 'cut', 'contextmenu', 'dragstart', 'selectstart'].forEach((eventName) => {
     textDisplay.addEventListener(eventName, (event) => event.preventDefault());
 });
 
-// Zone de saisie : collage et dépôt bloqués
 ['paste', 'drop', 'dragover', 'dragenter'].forEach((eventName) => {
     typingInput.addEventListener(eventName, (event) => event.preventDefault());
 });
@@ -153,7 +147,7 @@ typingInput.addEventListener('beforeinput', (event) => {
     if (blockedTypes.includes(event.inputType)) event.preventDefault();
 });
 
-/* ---------- Initialisation ---------- */
+
 
 typingInput.addEventListener('input', handleInput);
 restartButton.addEventListener('click', resetGame);
